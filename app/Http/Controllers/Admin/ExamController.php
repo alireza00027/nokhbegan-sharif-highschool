@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class ExamController extends Controller {
 
     public function index() {
-        $title = "test";
+        $title = "این عنوان برای تست است";
         $exams = Exam::filter()->with('user')->with('course')->latest()->paginate(30);
         return view('admin.exams.index', compact('title', 'exams'));
     }
