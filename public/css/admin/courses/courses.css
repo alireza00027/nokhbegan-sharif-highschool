@@ -1,0 +1,27 @@
+.card-header:after {
+    display: none !important;
+}
+
+.doughnutContainer {
+    width: 100px;
+    height: 100px;
+    max-height: 100px;
+}
+
+.users {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+.select2-container .select2-selection--single {
+    height: auto !important;
+    border-color: #ced4da;
+}
+.select2-dropdown .select2-search__field:focus, .select2-search--inline .select2-search__field:focus {
+    border: none !important;
+}
+
+.dotLine {
+    flex: 1;
+    border-top: 1px dotted #cccccc;
+}

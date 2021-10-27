@@ -1,0 +1,20 @@
+td {
+    padding: 7px 0 !important;
+    vertical-align: middle !important;
+}
+.userImage {
+    width: 100px;
+    height: 100px;
+}
+.selectImage {
+    width: 100px;
+    height: 100px;
+    border: 3px dashed #cccccc;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.select2-results__option[aria-selected=true] {
+    background-color: #efefef !important;
+}
