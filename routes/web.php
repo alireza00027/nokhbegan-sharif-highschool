@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\FinancialController;
+use App\Http\Controllers\FinancialItemController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('exams')->group(function() {
-    Route::get('/',[ExamController::class,'index'])->name('exams.index');
-    Route::get('chart-style',[ExamController::class,'chartStyle'])->name('exams.chartStyle');
+Route::middleware('auth')->group(function () {
+    Route::prefix('exams')->group(function () {
+        Route::get('/', [ExamController::class, 'index'])->name('exams.index');
+        Route::get('chart-style', [ExamController::class, 'chartStyle'])->name('exams.chartStyle');
+    });
+
+    Route::prefix('financials')->group(function () {
+        Route::get('/', [FinancialController::class, 'index'])->name('financials.index');
+        Route::get('/{financial}/show', [FinancialController::class, 'show'])->name('financials.show');
+    });
+
+    Route::prefix('financialItems')->group(function () {
+        Route::get('/{financialItem}/payment', [FinancialItemController::class, 'payment'])->name('financialItems.payment');
+        Route::get('/payment/check', [FinancialItemController::class, 'check'])->name('financialItems.payment.check');
+    });
 });
 
 Route::get('/', function () {
@@ -28,4 +42,4 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

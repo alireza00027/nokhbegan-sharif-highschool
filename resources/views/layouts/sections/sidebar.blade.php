@@ -168,6 +168,28 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('financials.index')}}" class="nav-link @if (url()->current() == route('financials.index')) active @endif">
+                            <i class="nav-icon fa fa-money"></i>
+                            <p>
+                                حساب های مالی من
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="$('#form-logout').submit()">
+                            <i class="nav-icon fa fa-power-off"></i>
+                            <p>
+                                خروج
+                            </p>
+                        </a>
+                        <form id="form-logout" action="{{route('logout')}}" method="post" style="display: none">
+                            {{csrf_field()}}
+                            <div class="nav-link">
+                                <button type="submit"><i class="nav-icon fa fa-power-off">خروج</i></button>
+                            </div>
+                        </form>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

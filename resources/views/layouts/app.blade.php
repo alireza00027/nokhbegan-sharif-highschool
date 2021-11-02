@@ -25,6 +25,7 @@
 
 </head>
 <body class="hold-transition sidebar-mini">
+    @include('sweetalert::alert')
 <div class="wrapper">
     <!-- Navbar -->
     @include('layouts.sections.navbar')
