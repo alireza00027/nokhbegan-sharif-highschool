@@ -10,8 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
@@ -62,24 +61,23 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-//relationShips
-    public function exams()
-    {
-        return $this->hasMany(Exam::class,'user_id');
+    //relationShips
+    public function exams() {
+        return $this->hasMany(Exam::class, 'user_id');
     }
 
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class,'role_user');
+    public function roles() {
+        return $this->belongsToMany(Role::class, 'role_user');
     }
 
-    public function financial()
-    {
-        return $this->belongsTo(Financial::class,'financial_id');
+    public function financial() {
+        return $this->belongsTo(Financial::class, 'financial_id');
     }
-//method
-    public function getGadeText()
-    {
+    public function schedules() {
+        return $this->hasMany(Schedule::class, 'user_id');
+    }
+    //method
+    public function getGadeText() {
         switch ($this->grade) {
             case 'seventh':
                 return 'هفتم';
@@ -97,7 +95,7 @@ class User extends Authenticatable
     }
 
     public function hasRole($name) {
-        $roles=$this->roles()->pluck('name')->toArray();
-        return in_array($name,$roles);
+        $roles = $this->roles()->pluck('name')->toArray();
+        return in_array($name, $roles);
     }
 }
