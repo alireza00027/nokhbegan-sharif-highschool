@@ -71,7 +71,7 @@ class ScheduleController extends Controller {
 
             $answerScheduleItem = new ScheduleItem();
             $answerScheduleItem->day_of_week = $key;
-            $answerScheduleItem->type = "request";
+            $answerScheduleItem->type = "answer";
             $answerScheduleItem->schedule_id = $schedule->id;
             $schedule->created_at = Carbon::createFromTimestamp($request->createdAtTimestamp)->addDays($dayNumber);
             $schedule->updated_at = Carbon::createFromTimestamp($request->createdAtTimestamp);
@@ -80,7 +80,7 @@ class ScheduleController extends Controller {
             $dayNumber++;
         }
         alert()->success('عملیات موفق', 'عملیات با موفقیت انجام شد')->autoclose(4000);
-        return back();
+        return redirect()->route('admin.schedules.show', ['schedule' => $schedule->id]);
     }
 
     public function show(Request $request, Schedule $schedule) {
@@ -118,7 +118,7 @@ class ScheduleController extends Controller {
     public function destroy(Schedule $schedule) {
         $scheduleItems = ScheduleItem::where('schedule_id', $schedule->id)->get();
         foreach ($scheduleItems as $item) {
-            $item->delete;
+            $item->delete();
         }
         $schedule->delete();
         alert()->success('عملیات موفق', 'حذف با موفقیت انجام شد')->autoclose(4000);

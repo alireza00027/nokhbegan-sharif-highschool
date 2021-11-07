@@ -3,6 +3,7 @@
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\FinancialItemController;
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,12 @@ Route::middleware('auth')->group(function () {
     Route::prefix('financialItems')->group(function () {
         Route::get('/{financialItem}/payment', [FinancialItemController::class, 'payment'])->name('financialItems.payment');
         Route::get('/payment/check', [FinancialItemController::class, 'check'])->name('financialItems.payment.check');
+    });
+
+    Route::prefix('schedules')->group(function () {
+        Route::get('/', [ScheduleController::class, 'index'])->name('schedules.index');
+        Route::get('/{schedule}/show', [ScheduleController::class, 'show'])->name('schedules.show');
+        Route::patch('/{schedule}/process', [ScheduleController::class, 'process'])->name('schedules.process');
     });
 });
 
