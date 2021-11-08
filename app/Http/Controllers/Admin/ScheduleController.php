@@ -11,13 +11,13 @@ use Illuminate\Http\Request;
 
 class ScheduleController extends Controller {
     public $daysWeek = [
-        'saturday' => 'شنبه',
-        'sunday' => 'یکشنبه',
-        'monday' => 'دوشنبه',
-        'tuesday' => 'سه شنبه',
-        'wendsday' => 'چهارشنبه',
-        'thursday' => 'پنجشنبه',
-        'friday' => 'جمعه'
+        'Saturday' => 'شنبه',
+        'Sunday' => 'یکشنبه',
+        'Monday' => 'دوشنبه',
+        'Tuesday' => 'سه شنبه',
+        'Wendsday' => 'چهارشنبه',
+        'Thursday' => 'پنجشنبه',
+        'Friday' => 'جمعه'
     ];
     public $months = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
     public function index() {

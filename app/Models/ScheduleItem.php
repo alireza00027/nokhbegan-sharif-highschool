@@ -12,25 +12,25 @@ class ScheduleItem extends Model {
 
     public function getDayOfWeekText() {
         switch ($this->day_of_week) {
-            case 'saturday':
+            case 'Saturday':
                 return "شنبه";
                 break;
-            case 'sunday':
+            case 'Sunday':
                 return "یکشنبه";
                 break;
-            case 'monday':
+            case 'Monday':
                 return "دوشنبه";
                 break;
-            case 'tuesday':
+            case 'Tuesday':
                 return "سه شنبه";
                 break;
-            case 'wendsday':
+            case 'Wendsday':
                 return "چهارشنبه";
                 break;
-            case 'thursday':
+            case 'Thursday':
                 return "پنجشنبه";
                 break;
-            case 'friday':
+            case 'Friday':
                 return "جمعه";
                 break;
 

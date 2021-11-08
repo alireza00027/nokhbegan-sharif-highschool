@@ -205,6 +205,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{route('schedules.index')}}" class="nav-link @if (url()->current() == route('schedules.index')) active @endif">
+                            <i class="nav-icon fa fa-list-alt"></i>
+                            <p>
+                                برنامه های هفتگی من
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#" class="nav-link" onclick="$('#form-logout').submit()">
                             <i class="nav-icon fa fa-power-off"></i>
                             <p>
