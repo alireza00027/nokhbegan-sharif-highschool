@@ -1,0 +1,54 @@
+.card-header:after {
+    content: none;
+}
+
+.userImage {
+    width: 120px;
+    height: 120px;
+    box-shadow: 0 0 5px 2px #cccccc;
+    border-radius: 12px;
+}
+
+.userSelect {
+    box-shadow: none;
+    border: 2px dashed #cccccc;
+    object-fit: cover;
+}
+
+.selectedImage {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 0 5px 2px #cccccc;
+}
+
+.width120 {
+    width: 120px;
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+
+.borderLeftDashed {
+    border-left: 1px dashed #cccccc;
+}
+.borderLeftDashed:last-child {
+    border-left: 0 !important;
+}
+
+.customOverlay {
+    position: absolute;
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+@media screen and (max-width: 576px) {
+    .width120 {
+        width: auto;
+    }
+}
