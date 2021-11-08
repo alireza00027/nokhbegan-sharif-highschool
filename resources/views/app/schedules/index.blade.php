@@ -46,21 +46,14 @@
                                             <tr >
                                                 <td>{{$schedule->id}}</td>
                                                 <td>{{$schedule->user->name}}</td>
-                                                <td>{{$schedule->user->grade}}</td>
+                                                <td>{{$schedule->user->getGadeText()}}</td>
                                                 <td>{{$schedule->month}}</td>
                                                 <td>{{$schedule->getNumberWeek()}}</td>
                                                 <td>{{$schedule->getTime()}}</td>
                                                 <td>{{$schedule->sum_hour_request}}</td>
                                                 <td>{{$schedule->sum_hour_answer}}</td>
                                                 <td>
-                                                    <form action="{{route('admin.schedules.destroy',['schedule'=>$schedule->id])}}" method="POST">
-                                                        {{csrf_field()}}
-                                                        {{method_field('DELETE')}}
-                                                        <div class="btn-group">
-                                                            <a href="{{route('admin.schedules.show',['schedule'=>$schedule->id])}}" class="btn btn-sm btn-outline-primary">مشاهده</a>
-                                                            <button type="submit" class="btn btn-sm btn-outline-danger">حذف</button>
-                                                        </div>
-                                                    </form>
+                                                    <a href="{{route('schedules.show',['schedule'=>$schedule->id])}}" class="btn btn-sm btn-outline-primary">مشاهده</a>
                                                 </td>
                                             </tr>
                                         @endforeach
