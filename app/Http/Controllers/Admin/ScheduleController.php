@@ -63,8 +63,8 @@ class ScheduleController extends Controller {
             $sumHourItem += $request->get('home_work_' . $key);
 
             $requestScheduleItem->sum_hour = $sumHourItem;
-            $schedule->created_at = Carbon::createFromTimestamp($request->createdAtTimestamp)->addDays($dayNumber);
-            $schedule->updated_at = Carbon::createFromTimestamp($request->createdAtTimestamp);
+            $requestScheduleItem->created_at = Carbon::createFromTimestamp($request->createdAtTimestamp)->addDays($dayNumber);
+            $requestScheduleItem->updated_at = Carbon::createFromTimestamp($request->createdAtTimestamp)->addDays($dayNumber);
             $requestScheduleItem->save();
             $schedule->sum_hour_request += $sumHourItem;
             $schedule->save();
@@ -73,8 +73,8 @@ class ScheduleController extends Controller {
             $answerScheduleItem->day_of_week = $key;
             $answerScheduleItem->type = "answer";
             $answerScheduleItem->schedule_id = $schedule->id;
-            $schedule->created_at = Carbon::createFromTimestamp($request->createdAtTimestamp)->addDays($dayNumber);
-            $schedule->updated_at = Carbon::createFromTimestamp($request->createdAtTimestamp);
+            $answerScheduleItem->created_at = Carbon::createFromTimestamp($request->createdAtTimestamp)->addDays($dayNumber);
+            $answerScheduleItem->updated_at = Carbon::createFromTimestamp($request->createdAtTimestamp)->addDays($dayNumber);
             $answerScheduleItem->save();
 
             $dayNumber++;
@@ -86,8 +86,8 @@ class ScheduleController extends Controller {
     public function show(Request $request, Schedule $schedule) {
         $title = 'مشاهده برنامه هفتگی';
         $user = $schedule->user;
-        $requestScheduleItems = ScheduleItem::where('schedule_id', $schedule->id)->where('type', 'request')->latest()->get();
-        $answerScheduleItems = ScheduleItem::where('schedule_id', $schedule->id)->where('type', 'answer')->latest()->get();
+        $requestScheduleItems = ScheduleItem::where('schedule_id', $schedule->id)->where('type', 'request')->orderBy('created_at')->get();
+        $answerScheduleItems = ScheduleItem::where('schedule_id', $schedule->id)->where('type', 'answer')->orderBy('created_at')->get();
         return view('admin.schedules.show', compact('title', 'requestScheduleItems', 'answerScheduleItems', 'user', 'schedule'));
     }
 
