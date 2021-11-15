@@ -52,6 +52,7 @@
                         <tr>
                             <th style="min-width: 60px">ردیف</th>
                             <th style="min-width: 120px">عنوان درس</th>
+                            <th style="min-width: 120px">تعداد واحد</th>
                             <th style="min-width: 120px">تاریخ ثبت</th>
                             <th style="min-width: 120px">عملیات</th>
                         </tr>
@@ -61,7 +62,8 @@
                                 <tr>
                                     <td>{{$course->id}}</td>
                                     <td>{{$course->title}}</td>
-                                    <td>---</td>
+                                    <td>{{$course->unit}}</td>
+                                    <td>{{$course->getDate()}}</td>
                                     <td>
                                         <button type="button" data-modaldata="{{json_encode($course)}}" data-modalaction="{{route('admin.courses.update',['course'=>$course->id])}}" class="btn bg-transparent p-2 btn-open-edit-modal" data-toggle="modal" data-target="#editCourse">
                                             <i class="fa fa-edit text-dark fs4"></i>
@@ -87,18 +89,28 @@
     <div class="modal fade" id="addCourse" tabindex="-1" role="dialog" aria-labelledby="addCourse" aria-hidden="true">
         <div class="modal-dialog modal-lg animation" role="document">
             <div class="modal-content">
-                <form action="{{route('admin.courses.store')}}" method="post" autocomplete="off" class="w-100 needs-validation" novalidate>
+                <form id="modal-add-course" action="{{route('admin.courses.store')}}" method="post" autocomplete="off" class="w-100 needs-validation" novalidate>
                     {{csrf_field()}}
                     <div class="modal-header d-flex flex-row align-items-center justify-content-between">
-                        <h5 class="modal-title">افزودن درس جدید</h5>
+                        <h5 class="modal-title">افزودن درس</h5>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body d-flex flex-column centered">
                         <div class="w-100 d-flex flex-wrap mt-3 mb-4">
-                            <div class="col-md-12 form-group mb-md-4">
-                                <label for="user_id" class="form-label fs2">
-                                    عنوان درس <span class="text-danger">*</span>
-                                </label>
-                                <input id="title" name="title" class="form-control" placeholder="عنوان درس">
+                            <div class="w-100">
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-md-4">
+                                        <label for="title" class="form-label fs2">
+                                            عنوان درس <span class="text-danger">*</span>
+                                        </label>
+                                        <input id="title" name="title" class="form-control" value="">
+                                    </div>
+                                    <div class="col-md-6 form-group mb-md-4">
+                                        <label for="unit" class="form-label fs2">
+                                            تعداد واحد <span class="text-danger">*</span>
+                                        </label>
+                                        <input id="unit" name="unit" class="form-control" value="">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -109,7 +121,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> 
     <div class="modal fade" id="deleteCourse" tabindex="-1" role="dialog" aria-labelledby="deleteCourse" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -140,11 +152,19 @@
                     <div class="modal-body d-flex flex-column centered">
                         <div class="w-100 d-flex flex-wrap mt-3 mb-4">
                             <div class="w-100">
-                                <div class="col-md-6 form-group mb-md-4">
-                                    <label for="modal-title" class="form-label fs2">
-                                        عنوان درس <span class="text-danger">*</span>
-                                    </label>
-                                    <input id="modal-title" name="title" class="form-control" value="">
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-md-4">
+                                        <label for="modal-title" class="form-label fs2">
+                                            عنوان درس <span class="text-danger">*</span>
+                                        </label>
+                                        <input id="modal-title" name="title" class="form-control" value="">
+                                    </div>
+                                    <div class="col-md-6 form-group mb-md-4">
+                                        <label for="modal-unit" class="form-label fs2">
+                                            تعداد واحد <span class="text-danger">*</span>
+                                        </label>
+                                        <input id="modal-unit" name="unit" class="form-control" value="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -177,6 +197,7 @@
             let formData = $(this).data('modaldata');
             $('#modal-edit-course').attr('action', formAction);
             $('#modal-title').val(formData.title);
+            $('#modal-unit').val(formData.unit);
         });
     </script>
 @endsection

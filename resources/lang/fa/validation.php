@@ -59,7 +59,7 @@ return array(
     "required"         => "فیلد :attribute الزامی است",
     "required_if"      => "فیلد :attribute هنگامی که :other برابر با :value است، الزامیست.",
     "required_with"    => ":attribute الزامی است زمانی که :values موجود است.",
-    "required_with_all"=> ":attribute الزامی است زمانی که :values موجود است.",
+    "required_with_all" => ":attribute الزامی است زمانی که :values موجود است.",
     "required_without" => ":attribute الزامی است زمانی که :values موجود نیست.",
     "required_without_all" => ":attribute الزامی است زمانی که :values موجود نیست.",
     "same"             => ":attribute و :other باید مانند هم باشند.",
@@ -89,9 +89,7 @@ return array(
     |
     */
 
-    'custom' => [
-
-    ],
+    'custom' => [],
 
     /*
     |--------------------------------------------------------------------------
@@ -144,10 +142,11 @@ return array(
         'enSlug' => 'نامک انگلیسی',
         'percent' => 'درصد',
         'images' => 'تصویر',
-        'comment'=>'نظر',
-        'natural_id'=>'کد ملی',
-        'amount'=>'مبلغ',
-        'student_id'=>'دانش آموز',
-        'n_items'=>'تعداد دانش آموز'
+        'comment' => 'نظر',
+        'natural_id' => 'کد ملی',
+        'amount' => 'مبلغ',
+        'student_id' => 'دانش آموز',
+        'n_items' => 'تعداد دانش آموز',
+        'unit' => 'تعداد واحد'
     ),
 );
