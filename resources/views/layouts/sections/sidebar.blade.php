@@ -213,14 +213,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('users.profile')}}" class="nav-link @if (url()->current() == route('users.profile')) active @endif">
-                            <i class="nav-icon fa fa-user"></i>
-                            <p>
-                                اطلاعات کاربری
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="#" class="nav-link" onclick="$('#form-logout').submit()">
                             <i class="nav-icon fa fa-power-off"></i>
                             <p>

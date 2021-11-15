@@ -4,7 +4,6 @@ use App\Http\Controllers\ExamController;
 use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\FinancialItemController;
 use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,12 +38,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [ScheduleController::class, 'index'])->name('schedules.index');
         Route::get('/{schedule}/show', [ScheduleController::class, 'show'])->name('schedules.show');
         Route::patch('/{schedule}/process', [ScheduleController::class, 'process'])->name('schedules.process');
-    });
-
-    Route::prefix('users')->group(function () {
-        Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
-        Route::patch('/{user}/change-password', [UserController::class, 'changePassword'])->name('users.changePassword');
-        Route::patch('/{user}/update', [UserController::class, 'update'])->name('users.update');
     });
 });
 
