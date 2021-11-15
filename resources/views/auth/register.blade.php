@@ -1,80 +1,135 @@
+@extends('layouts.auth')
 
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="name" value="{{ __('نام و نام خانوادگی') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('ایمیل') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="mobile" value="{{ __('موبایل') }}" />
-                <x-jet-input id="mobile" class="block mt-1 w-full" type="text" name="mobile" :value="old('mobile')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="natural_id" value="{{ __('کد ملی') }}" />
-                <x-jet-input id="natural_id" class="block mt-1 w-full" type="text" name="natural_id" :value="old('natural_id')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="grade" value="{{ __('پایه') }}" />
-                <select id="grade" name="grade">
-                    <option value="seventh">هفتم</option>
-                    <option value="eighth">هشتم</option>
-                    <option value="ninth">نهم</option>
-                    <option value="teacher">معلم</option>
-                </select>
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('رمز عبور') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('تکرار رمز عبور') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
+@section('content')
+    <main>
+        <div class="mainContainer d-flex centered flex-column">
+            <div class="fs6 text-white">ثبت نام</div>
+            <div class="col-10 col-sm-6 col-md-6 rounded p-3 mt-4 bg-white d-flex centered flex-column animation formContainer">
+                <form action="{{route('register')}}" method="post" autocomplete="off" class="w-100 pb-2 px-3 py-4 needs-validation bg-nokhbegan" novalidate>
+                    @csrf
+                    @include('layouts.sections.errors')
+                    <div>
+                        <label for="name" class="form-label fs2">
+                            نام و نام خانوادگی <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <input type="text"
+                                   name="name"
+                                   class="form-control fs1"
+                                   id="name"
+                                   placeholder=" نام و نام خانوادگی "
+                                   pattern="[\u0600-\u06FF\s]{3,}$"
+                                   required>
+                            <span class="input-group-text">
+                            <i class="fa fa-check-circle text-secondary"></i>
+                        </span>
+                            <div class="invalid-feedback">
+                                نام و نام خانوادگی اشتباه است
                             </div>
                         </div>
-                    </x-jet-label>
-                </div>
-            @endif
+                    </div>
 
-            <div class="flex items-center justify-end mt-4">
-                {{-- <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a> --}}
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
+                    <div class="mt-3">
+                        <label for="email" class="form-label fs2">
+                            ایمیل <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <input type="email"
+                                   name="email"
+                                   class="form-control fs1"
+                                   id="email"
+                                   placeholder="  ایمیل "
+                                   pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                   required>
+                            <span class="input-group-text">
+                            <i class="fa fa-check-circle text-secondary"></i>
+                        </span>
+                            <div class="invalid-feedback">
+                                ایمیل اشتباه است
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 mb-2">
+                        <label for="mobile" class="form-label fs2">
+                            موبایل <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <input type="text"
+                                   name="mobile"
+                                   class="form-control fs1"
+                                   id="mobile"
+                                   placeholder="موبایل "
+                                   required>
+                            <span class="input-group-text">
+                            <i class="fa fa-check-circle text-secondary"></i>
+                        </span>
+                            <div class="invalid-feedback">
+                                موبایل اشتباه است
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 mb-2">
+                        <label for="natural_id" class="form-label fs2">
+                            کد ملی : <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <input type="text"
+                                   name="natural_id"
+                                   class="form-control fs1"
+                                   id="natural_id"
+                                   placeholder="کد ملی "
+                                   required>
+                            <span class="input-group-text">
+                            <i class="fa fa-check-circle text-secondary"></i>
+                        </span>
+                            <div class="invalid-feedback">
+                                کدملی اشتباه است
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 mb-2">
+                        <label for="grade" class="form-label fs2">
+                            پایه <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <select id="grade"  name="grade" class="form-control select2" style="width: 100%;">
+                                <option value="seventh">هفتم</option>
+                                <option value="eighth">هشتم</option>
+                                <option value="ninth">نهم</option>
+                                <option value="student">معلم</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                پایه اشتباه است
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 mb-2">
+                        <label for="password" class="form-label fs2">
+                            کلمه عبور <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group position-relative">
+                            <input type="password"
+                                   name="password"
+                                   class="form-control passInput fs1"
+                                   id="password"
+                                   pattern="^[A-Za-z\d@$!%*#?&]{8,}$"
+                                   placeholder="کلمه عبور"
+                                   required>
+                            <i class="fa fa-eye-slash position-absolute p-2 eye-slash-icon text-secondary"
+                               onclick="showPassword(this, 'password')">
+                            </i>
+                            <span class="input-group-text" id="passwordValidation">
+                            <i class="fa fa-check-circle text-secondary"></i>
+                        </span>
+                            <div class="invalid-feedback">
+                                کلمه عبور اشتباه است
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-secondary  col-12 mb-3 mt-4 mb-4" type="submit">ثبت نام</button>
+                </form>
             </div>
-        </form>
-    </x-jet-authentication-card>
-
+            <p class="copyRight mt-3 fs1">تمامی حقوق مربوط به آریاپارت است.</p>
+        </div>
+    </main>
+@endsection

@@ -11,15 +11,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
-class RegisteredUserController extends Controller
-{
+class RegisteredUserController extends Controller {
     /**
      * Display the registration view.
      *
      * @return \Illuminate\View\View
      */
-    public function create()
-    {
+    public function create() {
         return view('auth.register');
     }
 
@@ -31,23 +29,22 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'mobile'=>'required|max:11|min:11',
-            'natural_id'=>'required|max:10|min:10',
-            'grade'=>'required',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'mobile' => 'required|max:11|min:11',
+            'natural_id' => 'required|max:10|min:10',
+            'grade' => 'required',
+            'password' => ['required'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'mobile'=> $request->mobile,
-            'natural_id'=>$request->natural_id,
-            'grade'=> $request->grade,
+            'mobile' => $request->mobile,
+            'natural_id' => $request->natural_id,
+            'grade' => $request->grade,
             'password' => Hash::make($request->password),
         ]);
 

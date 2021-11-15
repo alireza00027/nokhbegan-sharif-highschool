@@ -1,0 +1,61 @@
+.mainContainer {
+    width: 100%;
+    min-height: 100vh;
+    background: url('../../img/login.jpg') no-repeat center;
+    background-size: cover;
+    overflow: auto;
+}
+
+.input-group-text {
+    border-radius: 4px 0 0 4px !important;
+    border-right: 0 !important;
+}
+
+.form-control {
+    border-radius: 0 4px 4px 0 !important;
+}
+a {
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #0056b3 !important;
+}
+ul li {
+    color: #ffffff99;
+}
+ul li a {
+    color: #ffffff99 !important;
+    text-decoration: none !important;
+}
+ul li a:hover {
+    color: #ffffff99 !important;
+    text-decoration: underline !important;
+}
+.copyRight {
+    color: #ffffff99 !important;
+}
+.forgetBtn {
+    border: 1px solid #dadada !important;
+}
+@media screen and (min-width: 1024px) {
+    .formContainer {
+        max-width: 450px !important;
+    }
+}
+.eye-slash-icon {
+    top: 3px;
+    left: 43px;
+    cursor: pointer;
+    z-index: 3 !important;
+}
+.passInput {
+    padding-left: 33px !important;
+}
+
+
+
+
+
+
