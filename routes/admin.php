@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminLevelController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\FinancialController;
 use App\Http\Controllers\Admin\FinancialItemController;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     //user Routing
     Route::get('teachers', [UserController::class, 'teachers'])->middleware('can:managerOrAssistant')->name('teachers.index');
     Route::prefix('students')->middleware('can:managerOrAssistant')->group(function () {

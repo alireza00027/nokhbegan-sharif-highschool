@@ -4,9 +4,6 @@
         <div>
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image pr-2">
-                    <img src="../../img/shahab/user.jpg" class="img-circle elevation-2" alt="User Image">
-                </div>
                 <div class="info">
                     <a href="#" class="d-block">شهاب طالبی</a>
                 </div>
@@ -17,7 +14,7 @@
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="../index.html" class="nav-link">
+                        <a href="{{route('admin.dashboard')}}" class="nav-link">
                             <i class="nav-icon fa fa-dashboard"></i>
                             <p>
                                 داشبورد
