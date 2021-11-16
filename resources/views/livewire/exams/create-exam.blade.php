@@ -64,9 +64,7 @@
                                         <th>ردیف</th>
                                         <th>نام دانش آموز</th>
                                         <th>درس</th>
-                                        <th>وضعیت</th>
                                         <th>نمره</th>
-                                        <th>عملیات</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -75,7 +73,7 @@
                                                     <td>{{$student->id}}</td>
                                                     <td>{{$student->name}}</td>
                                                     <td>{{$courseTitle}}</td>
-                                                    <livewire:exams.analysis-point :student="$student" :wire:key="$student->id">
+                                                    <td><input type="text" class="form-control" name="point_{{$student->id}}" id="point" placeholder="نمره بین 0 تا 2"></td>
                                                 </tr>
                                             @endforeach
                                     </tbody>

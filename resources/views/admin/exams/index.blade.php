@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('css/admin/exams/exams.css')}}">
+
 @endsection
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -85,8 +86,9 @@
                                                 <td>{{$exam->user->getGadeText()}}</td>
                                                 <td>{{$exam->course->title}}</td>
                                                 <td>{{$exam->getTime()}}</td>
-                                                <td class="bg-{{$exam->getStatusColor()}}">{{$exam->getStatusText()}}</td>
-                                                <td class="bg-{{$exam->getStatusColor()}}">{{$exam->point}}</td>
+                                                @php($status=$exam->getStatus())
+                                                <td class="bg-{{$status['bg']}}">{{$status['str']}}</td>
+                                                <td class="bg-{{$status['bg']}}">{{$exam->point}}</td>
                                                 
                                             </tr>
                                         @endforeach

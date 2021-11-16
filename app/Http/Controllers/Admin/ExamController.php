@@ -29,10 +29,22 @@ class ExamController extends Controller {
 
     public function create() {
         $title = "ثبت آزمون صبحانه";
+        $courses = Course::all();
         return view('admin.exams.create', compact('title'));
     }
 
     public function store(Request $request) {
-        dd($request);
+        $studentsId = User::where('grade', $request->grade)->pluck('id')->toArray();
+        foreach ($studentsId as $id) {
+            $exam = new Exam();
+            $exam->user_id = $id;
+            $exam->course_id = $request->course_id;
+            $exam->point = $request->get('point_' . $id);
+            $exam->created_at = Carbon::createFromTimestamp($request->createdAtTimestamp);
+            $exam->updated_at = Carbon::createFromTimestamp($request->createdAtTimestamp);
+            $exam->save();
+        }
+        alert()->success('عملیات با موفقیت انجام شد', 'عملیات موفق')->autoclose(4000);
+        return back();
     }
 }

@@ -5804,7 +5804,21 @@ button.close, button.mailbox-attachment-close {
 .align-text-top {
   vertical-align: text-top !important;
 }
-
+.bg-veryBad, .label-veryBad {
+  background-color: #Ff0000  !important;
+}
+.bg-bad, .label-bad {
+  background-color: #Ff6200  !important;
+}
+.bg-middle, .label-middle {
+  background-color: #Ffe800  !important;
+}
+.bg-good, .label-good {
+  background-color: #03f20a  !important;
+}
+.bg-excellent, .label-excellent {
+  background-color: #158018  !important;
+}
 .bg-primary, .label-primary {
   background-color: #007bff !important;
 }
