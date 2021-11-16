@@ -19,11 +19,15 @@ class ExamController extends Controller {
 
     public function chartStyle() {
         $title = 'تحلیل نموداری';
-        $exams = Exam::selectRaw('PDATE(created_at) day , point')
+        $exams = Exam::selectRaw('PDATE(created_at) day , point ,user_id')
             ->filter()
             ->where('created_at', '>', Carbon::now()->subMonth(6))
             ->orderBy('created_at', 'desc')
             ->get();
+        foreach ($exams as $exam) {
+            $user = User::where('id', $exam->user_id)->first();
+            $exam->userName = $user->name;
+        }
         return view('admin.exams.chart-style', compact('title', 'exams'));
     }
 

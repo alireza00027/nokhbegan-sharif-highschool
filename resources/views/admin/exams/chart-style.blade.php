@@ -113,7 +113,8 @@
             let performance = new Chart(performanceCanvas);
 
             let performanceData = {
-                labels  : [@foreach($exams as $data) '{{$data->day}}', @endforeach],
+                
+                labels  : [@foreach($exams as $data) '{{$data->userName}}', @endforeach],
                 datasets: [
                     {
                         label               : 'Digital Goods',
