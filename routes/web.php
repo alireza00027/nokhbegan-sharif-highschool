@@ -3,6 +3,7 @@
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\FinancialItemController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::prefix('exams')->group(function () {
         Route::get('/', [ExamController::class, 'index'])->name('exams.index');
         Route::get('chart-style', [ExamController::class, 'chartStyle'])->name('exams.chartStyle');
@@ -40,13 +42,5 @@ Route::middleware('auth')->group(function () {
         Route::patch('/{schedule}/process', [ScheduleController::class, 'process'])->name('schedules.process');
     });
 });
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
