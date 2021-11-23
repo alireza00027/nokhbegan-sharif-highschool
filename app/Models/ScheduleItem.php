@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ScheduleItem extends Model {
     use HasFactory;
 
-    protected $fillable = ['schedule_id', 'day_of_week', 'amount_today_lessons', 'amount_tomorow_lessons', 'amount_review_previous_lessons', 'home_work', 'sum_work'];
+    protected $fillable = ['schedule_id', 'day_of_week', 'amount_today_lessons', 'amount_tomorow_lessons', 'amount_review_previous_lessons', 'home_work', 'description', 'sum_work'];
 
     public function getDayOfWeekText() {
         switch ($this->day_of_week) {

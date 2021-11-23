@@ -37,8 +37,8 @@ class ScheduleController extends Controller {
             $sumHour += $request->get('answer_amount_tomorow_lessons_' . $answerScheduleItem->day_of_week);
             $answerScheduleItem->amount_review_previous_lessons = $request->get('answer_amount_review_previous_lessons_' . $answerScheduleItem->day_of_week);
             $sumHour += $request->get('answer_amount_review_previous_lessons_' . $answerScheduleItem->day_of_week);
-            $answerScheduleItem->home_work = $request->get('home_work_' . $answerScheduleItem->day_of_week);
-            $sumHour += $request->get('home_work_' . $answerScheduleItem->day_of_week);
+            $answerScheduleItem->home_work = $request->get('answer_home_work_' . $answerScheduleItem->day_of_week);
+            $sumHour += $request->get('answer_home_work_' . $answerScheduleItem->day_of_week);
             $answerScheduleItem->sum_hour = $sumHour;
             $answerScheduleItem->save();
             $schedule->sum_hour_answer -= $oldSumHourSchedule;

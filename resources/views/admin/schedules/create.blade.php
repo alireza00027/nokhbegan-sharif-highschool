@@ -79,6 +79,7 @@
                                                             <th>دروس فردا</th>
                                                             <th>مرور دروس قبل</th>
                                                             <th>تکالیف</th>
+                                                            <th>توضیحات</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -96,6 +97,9 @@
                                                                 </td>
                                                                 <td>
                                                                     <input name="home_work_{{$key}}" id="home_work" class="form-control" placeholder="زمان به دقیقه">
+                                                                </td>
+                                                                <td>
+                                                                    <textarea name="description_{{$key}}" id="description" cols="6" rows="6" class="form-control" placeholder="توضیحات {{$value}}"></textarea>
                                                                 </td>
                                                             </tr>
                                                         @endforeach

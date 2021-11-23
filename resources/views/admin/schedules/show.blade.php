@@ -64,6 +64,7 @@
                                                                 <th>دروس فردا</th>
                                                                 <th>مرور دروس قبل</th>
                                                                 <th>تکالیف</th>
+                                                                <th>توضیحات</th>
                                                                 <th>مجموع ساعت</th>
                                                             </tr>
                                                         </thead>
@@ -88,11 +89,15 @@
                                                                         <input name="answer_home_work_{{$answerScheduleItems[$key]->day_of_week}}" id="answer_home_work" class="form-control text-danger text-center bg-secondary" disabled value="{{$answerScheduleItems[$key]->home_work}}">
                                                                     </td>
                                                                     <td>
+                                                                        <textarea name="request_description_{{$value->day_of_week}}" id="request_description" cols="6" rows="6" class="form-control">{{$value->description}}</textarea>
+                                                                    </td>
+                                                                    <td>
                                                                         <div class="d-flex flex-column mr-4">
                                                                             <span class="text-success">{{$value->sum_hour == null ? 0 : $value->sum_hour}} دقیقه</span>
                                                                             <span class="text-danger mt-3">{{$answerScheduleItems[$key]->sum_hour == null ? 0 : $answerScheduleItems[$key]->sum_hour}} دقیقه</span>
                                                                         </div>
                                                                     </td>
+                                                                    
                                                                 </tr>
                                                             @endforeach
                                                         </tbody>

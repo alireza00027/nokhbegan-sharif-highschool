@@ -20,6 +20,7 @@ class CreateScheduleItemsTable extends Migration {
             $table->bigInteger('amount_tomorow_lessons')->nullable();
             $table->bigInteger('amount_review_previous_lessons')->nullable();
             $table->bigInteger('home_work')->nullable();
+            $table->text('description')->nullable()->comment('توضیحات');
             $table->bigInteger('sum_hour')->nullable();
             $table->timestamps();
         });

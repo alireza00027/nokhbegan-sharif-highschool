@@ -61,6 +61,7 @@ class ScheduleController extends Controller {
             $sumHourItem += $request->get('amount_review_previous_lessons_' . $key);
             $requestScheduleItem->home_work = $request->get('home_work_' . $key);
             $sumHourItem += $request->get('home_work_' . $key);
+            $requestScheduleItem->description = $request->get('description_' . $key);
 
             $requestScheduleItem->sum_hour = $sumHourItem;
             $requestScheduleItem->created_at = Carbon::createFromTimestamp($request->createdAtTimestamp)->addDays($dayNumber);
@@ -104,6 +105,8 @@ class ScheduleController extends Controller {
             $sumHourItem += $request->get('request_amount_review_previous_lessons_' . $scheduleItem->day_of_week);
             $scheduleItem->home_work = $request->get('request_home_work_' . $scheduleItem->day_of_week);
             $sumHourItem += $request->get('request_home_work_' . $scheduleItem->day_of_week);
+
+            $scheduleItem->description = $request->get('request_description_' . $scheduleItem->day_of_week);
 
             $scheduleItem->sum_hour = $sumHourItem;
             $scheduleItem->save();

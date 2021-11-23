@@ -64,7 +64,9 @@
                                                                 <th>دروس فردا</th>
                                                                 <th>مرور دروس قبل</th>
                                                                 <th>تکالیف</th>
+                                                                
                                                                 <th>مجموع ساعت</th>
+                                                                <th>توضیحات</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -87,11 +89,17 @@
                                                                         <input name="request_home_work_{{$requestScheduleItems[$key]->day_of_week}}" id="request_home_work" class="form-control text-center bg-secondary text-danger" disabled value="{{$requestScheduleItems[$key]->home_work}}">
                                                                         <input name="answer_home_work_{{$value->day_of_week}}" id="answer_home_work" class="form-control  text-center " @if ($value->day_of_week != $todayName and $value->created_at != $today) disabled @endif  value="{{ $value->home_work}}">
                                                                     </td>
+                                                                    
                                                                     <td>
                                                                         <div class="d-flex flex-column mr-4">
                                                                             <span class="text-danger">{{$requestScheduleItems[$key]->sum_hour == null ? 0 : $requestScheduleItems[$key]->sum_hour}} دقیقه</span>
                                                                             <span class="text-success mt-3">{{$value->sum_hour == null ? 0 : $value->sum_hour}} دقیقه</span>
                                                                         </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="button" data-modaldata="{{json_encode($requestScheduleItems[$key])}}"class="btn btn-sm btn-outline-nokhbegan btn-open-description-modal mr-2" data-toggle="modal" data-target="#descriptionScheduleItem">
+                                                                            توضیحات</i>
+                                                                        </button>
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -120,6 +128,29 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<div class="modal fade" id="descriptionScheduleItem" tabindex="-1" role="dialog" aria-labelledby="descriptionScheduleItem" aria-hidden="true">
+    <div class="modal-dialog modal-lg animation" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-flex flex-row align-items-center justify-content-between">
+                <h5 class="modal-title">جزئیات</h5>
+            </div>
+            <div class="modal-body d-flex flex-column centered">
+                <div class="w-100 d-flex flex-wrap mt-3 mb-4">
+                    <div class="w-100">
+                        <div class="row">
+                            <div class="col-12">
+                                <textarea name="modal-description" id="modal-description" cols="30" rows="10" class="form-control" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex align-items-center justify-content-between">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @section('script')
     <!-- Persian Data Picker -->
@@ -134,4 +165,11 @@
     <script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
     <!-- Page script -->
     <script src="{{asset('js/admin/exams/exam.js')}}"></script>
+
+    <script>
+        $('.btn-open-description-modal').click(function () {
+            let formData = $(this).data('modaldata');
+            $('#modal-description').val(formData.description);
+        });
+    </script>
 @endsection
