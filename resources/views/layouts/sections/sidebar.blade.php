@@ -210,6 +210,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{route('exams.index')}}" class="nav-link @if (url()->current() == route('exams.index')) active @endif">
+                            <i class="nav-icon fa fa-list-alt"></i>
+                            <p>
+                                آزمون های صبحانه من
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#" class="nav-link" onclick="$('#form-logout').submit()">
                             <i class="nav-icon fa fa-power-off"></i>
                             <p>
