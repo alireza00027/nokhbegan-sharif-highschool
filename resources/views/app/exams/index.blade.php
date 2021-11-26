@@ -105,6 +105,30 @@
                                 {!! $exams->links() !!}
                             </div> --}}
                         </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="form-group col-sm-12 col-md-12">
+                                    <label for="roundedAvg">میانگین نمرات : </label>
+                                    <input 
+                                    name="roundedAvg" 
+                                    id="roundedAvg" 
+                                    class="form-control text-center text-bold 
+                                    @if($roundedAvg>=0 and $roundedAvg < 0.5) 
+                                    bg-veryBad 
+                                    @elseif($roundedAvg >= 0.5 and $roundedAvg < 1.0) 
+                                    bg-bad
+                                    @elseif($roundedAvg >= 1.0 and $roundedAvg < 1.5) 
+                                    bg-middle
+                                    @elseif($roundedAvg >= 1.5 and $roundedAvg < 2.0) 
+                                    bg-good
+                                    @elseif($roundedAvg >= 2.0) 
+                                    bg-excellent
+                                    @endif
+                                    " 
+                                    value="{{$roundedAvg}}">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /. box -->
                 </div>

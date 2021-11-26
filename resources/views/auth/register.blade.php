@@ -96,7 +96,7 @@
                                 <option value="seventh">هفتم</option>
                                 <option value="eighth">هشتم</option>
                                 <option value="ninth">نهم</option>
-                                <option value="student">معلم</option>
+                                <option value="teacher">معلم</option>
                             </select>
                             <div class="invalid-feedback">
                                 پایه اشتباه است

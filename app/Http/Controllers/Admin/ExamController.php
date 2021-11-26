@@ -14,7 +14,16 @@ class ExamController extends Controller {
     public function index() {
         $title = "لیست آزمون ها";
         $exams = Exam::filter()->with('user')->with('course')->latest()->paginate(30);
-        return view('admin.exams.index', compact('title', 'exams'));
+        $sumPoints = 0;
+        $sumCoefficients = 0;
+        $avg = 0;
+        foreach ($exams as $exam) {
+            $sumPoints += ($exam->course->unit * $exam->point);
+            $sumCoefficients += $exam->course->unit;
+        }
+        $avg = ($sumPoints / $sumCoefficients);
+        $roundedAvg = round($avg, 2);
+        return view('admin.exams.index', compact('title', 'exams', 'roundedAvg'));
     }
 
     public function chartStyle() {
