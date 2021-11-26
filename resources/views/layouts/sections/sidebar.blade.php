@@ -13,183 +13,168 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
+                    
+                    @can('managerOrAssistantOrteacher')
+                        <li class="nav-item">
+                            <a href="{{route('admin.dashboard')}}" class="nav-link">
+                                <i class="nav-icon fa fa-dashboard"></i>
+                                <p>
+                                    داشبورد
+                                </p>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('manager')
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-users"></i>
+                                <p>
+                                    کاربران
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('register')}}" class="nav-link @if (url()->current() == route('register')) active @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            ثبت کاربر جدید
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.students.seventhList')}}" class="nav-link @if(url()->current() == route('admin.students.seventhList'))
+                                        active
+                                        @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            پایه هفتم
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.students.eighthList')}}" class="nav-link @if (url()->current() == route('admin.students.eighthList')) active @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            پایه هشتم
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.students.ninthList')}}" class="nav-link @if (url()->current() == route('admin.students.ninthList')) active @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            پایه نهم
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.teachers.index')}}" class="nav-link @if(url()->current() == route('admin.teachers.index'))
+                                        active
+                                        @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            معلمین
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.level.index')}}" class="nav-link @if (url()->current() == route('admin.level.index')) active @endif">
+                                <i class="nav-icon fa fa-key"></i>
+                                <p>
+                                    سطح دسترسی
+                                </p>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('managerOrAssistant')
+                        <li class="nav-item">
+                            <a href="{{ route('admin.courses.index') }}" class="nav-link @if (url()->current() == route('admin.courses.index')) active @endif">
+                                <i class="nav-icon fa fa-gears"></i>
+                                <p>
+                                    دروس
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-list-alt"></i>
+                                <p>
+                                    برنامه هفتگی
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('admin.schedules.create')}}" class="nav-link @if (url()->current() == route('admin.schedules.create')) active @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            ثبت برنامه درسی
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.schedules.index')}}" class="nav-link @if(url()->current() == route('admin.schedules.index'))
+                                         active
+                                          @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            لیست برنامه های هفتگی
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                    @endcan
+                    @can('managerOrAssistantOrteacher')
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-list-alt"></i>
+                                <p>
+                                    آزمون صبحانه
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('admin.exams.create')}}" class="nav-link @if (url()->current() == route('admin.exams.create')) active @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            ثبت آزمون جدید
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.exams.index')}}" class="nav-link @if(url()->current() == route('admin.exams.index'))
+                                        active
+                                        @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            لیست آزمون ها
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.exams.chartStyle')}}" class="nav-link @if(url()->current() == route('admin.exams.chartStyle'))
+                                        active
+                                        @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            تحلیل نموداری
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endcan
                     <li class="nav-item">
-                        <a href="{{route('admin.dashboard')}}" class="nav-link">
+                        <a href="{{route('home')}}" class="nav-link @if(url()->current() == route('home'))
+                            active
+                            @endif">
                             <i class="nav-icon fa fa-dashboard"></i>
                             <p>
-                                داشبورد
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-users"></i>
-                            <p>
-                                کاربران
-                                <i class="fa fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('register')}}" class="nav-link @if (url()->current() == route('register')) active @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        ثبت کاربر جدید
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.students.seventhList')}}" class="nav-link @if(url()->current() == route('admin.students.seventhList'))
-                                     active
-                                      @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        پایه هفتم
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.students.eighthList')}}" class="nav-link @if (url()->current() == route('admin.students.eighthList')) active @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        پایه هشتم
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.students.ninthList')}}" class="nav-link @if (url()->current() == route('admin.students.ninthList')) active @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        پایه نهم
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.teachers.index')}}" class="nav-link @if(url()->current() == route('admin.teachers.index'))
-                                     active
-                                      @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        معلمین
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('admin.level.index')}}" class="nav-link @if (url()->current() == route('admin.level.index')) active @endif">
-                            <i class="nav-icon fa fa-key"></i>
-                            <p>
-                                سطح دسترسی
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.courses.index') }}" class="nav-link @if (url()->current() == route('admin.courses.index')) active @endif">
-                            <i class="nav-icon fa fa-gears"></i>
-                            <p>
-                                دروس
-                            </p>
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-list-alt"></i>
-                            <p>
-                                آزمون صبحانه
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('admin.exams.create')}}" class="nav-link @if (url()->current() == route('admin.exams.create')) active @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        ثبت آزمون جدید
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.exams.index')}}" class="nav-link @if(url()->current() == route('admin.exams.index'))
-                                     active
-                                      @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        لیست آزمون ها
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.exams.chartStyle')}}" class="nav-link @if(url()->current() == route('admin.exams.chartStyle'))
-                                     active
-                                      @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        تحلیل نموداری
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-list-alt"></i>
-                            <p>
-                                برنامه هفتگی
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('admin.schedules.create')}}" class="nav-link @if (url()->current() == route('admin.schedules.create')) active @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        ثبت برنامه درسی
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.schedules.index')}}" class="nav-link @if(url()->current() == route('admin.schedules.index'))
-                                     active
-                                      @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        لیست برنامه های هفتگی
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-money"></i>
-                            <p>
-                                بخش مالی
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('admin.financials.create')}}" class="nav-link @if (url()->current() == route('admin.financials.create')) active @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        ثبت حساب مالی
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.financials.index')}}" class="nav-link @if (url()->current() == route('admin.financials.index')) active @endif">
-                                    <i class="fa fa-circle-o nav-icon fs1"></i>
-                                    <p>
-                                        لیست حساب های مالی
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../messages/messages.html" class="nav-link">
-                            <i class="nav-icon fa fa-paper-plane"></i>
-                            <p>
-                                بخش پیام
+                                خانه
                             </p>
                         </a>
                     </li>
