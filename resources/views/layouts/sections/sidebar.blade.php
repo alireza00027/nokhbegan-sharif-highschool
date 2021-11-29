@@ -126,6 +126,34 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-money"></i>
+                                <p>
+                                    حساب مالی
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('admin.financials.create')}}" class="nav-link @if (url()->current() == route('admin.financials.create')) active @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            ثبت حساب مالی
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.financials.index')}}" class="nav-link @if(url()->current() == route('admin.financials.index'))
+                                         active
+                                          @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            لیست حساب های مالی
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         
                     @endcan
                     @can('managerOrAssistantOrteacher')
@@ -169,6 +197,7 @@
                         </li>
                     @endcan
                     <li class="nav-item">
+
                         <a href="{{route('home')}}" class="nav-link @if(url()->current() == route('home'))
                             active
                             @endif">

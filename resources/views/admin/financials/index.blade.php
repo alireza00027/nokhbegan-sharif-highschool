@@ -50,27 +50,28 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($financials as $financial)
-                                <tr>
-                                    <td>{{$financial->id}}</td>
-                                    <td>{{$financial->user->name}}</td>
-                                    <td>{{$financial->getGrade()}}</td>
-                                    <td>{{$financial->n_items}}</td>
-                                    <td>{{$financial->amount}}</td>
-                                    <td>{{$financial->paid==null ? 0 : $financial->paid}}</td>
-                                    <td>
-                                        @if ($financial->status="paying")
-                                            <span class="badge badge-warning pt-1 fs1 font-weight-light">{{$financial->getStatusText()}}</span>
-                                        @elseif($financial->status="paid")
-                                            <span class="badge badge-success pt-1 fs1 font-weight-light">{{$financial->getStatusText()}}</span>  
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('admin.financials.show', ['financial'=>$financial->id]) }}" class="btn btn-outline-primary">مشاهده</a>
-                                    </td>
-                                </tr>
-
-                            @endforeach
+                            @if (count($financials) > 0)
+                                @foreach($financials as $financial)
+                                    <tr>
+                                        <td>{{$financial->id}}</td>
+                                        <td>{{$financial->user->name}}</td>
+                                        <td>{{$financial->getGrade()}}</td>
+                                        <td>{{$financial->n_items}}</td>
+                                        <td>{{$financial->amount}}</td>
+                                        <td>{{$financial->paid==null ? 0 : $financial->paid}}</td>
+                                        <td>
+                                            @if ($financial->status="paying")
+                                                <span class="badge badge-warning pt-1 fs1 font-weight-light">{{$financial->getStatusText()}}</span>
+                                            @elseif($financial->status="paid")
+                                                <span class="badge badge-success pt-1 fs1 font-weight-light">{{$financial->getStatusText()}}</span>  
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin.financials.show', ['financial'=>$financial->id]) }}" class="btn btn-outline-primary">مشاهده</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                         <div class="mt-4 mr-2">

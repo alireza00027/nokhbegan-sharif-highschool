@@ -17,12 +17,16 @@ class ExamController extends Controller {
         $sumPoints = 0;
         $sumCoefficients = 0;
         $avg = 0;
-        foreach ($exams as $exam) {
-            $sumPoints += ($exam->course->unit * $exam->point);
-            $sumCoefficients += $exam->course->unit;
+        $roundedAvg = 0;
+        if (count($exams) > 0) {
+            foreach ($exams as $exam) {
+                $sumPoints += ($exam->course->unit * $exam->point);
+                $sumCoefficients += $exam->course->unit;
+            }
+            $avg = ($sumPoints / $sumCoefficients);
+            $roundedAvg = round($avg, 2);
         }
-        $avg = ($sumPoints / $sumCoefficients);
-        $roundedAvg = round($avg, 2);
+
         return view('admin.exams.index', compact('title', 'exams', 'roundedAvg'));
     }
 

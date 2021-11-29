@@ -26,9 +26,11 @@
                                 <div class="form-group col-sm-6 col-md-4">
                                     <label for="course_id">درس <span class="text-danger">*</span></label>
                                     <select wire:model="courseId" id="course_id" name="course_id" class="form-control " style="width: 100%;">
-                                        @foreach($courses as $course)
-                                            <option value="{{$course->id}}">{{$course->title}}</option>
-                                        @endforeach
+                                        @if (count($courses) > 0)
+                                            @foreach($courses as $course)
+                                                <option value="{{$course->id}}">{{$course->title}}</option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-6 col-md-4">

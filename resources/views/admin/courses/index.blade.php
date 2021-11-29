@@ -46,7 +46,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0 table-responsive mt-3">
-                    @include('layouts.sectionS.errors')
+                    @include('layouts.sections.errors')
                     <table id="coursesList" class="table table-hover text-center" style="border-spacing: 0; border-collapse: separate;">
                         <thead>
                         <tr>
