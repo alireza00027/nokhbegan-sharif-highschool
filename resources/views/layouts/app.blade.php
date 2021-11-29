@@ -50,6 +50,7 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.min.js') }}"></script>
 <script src="{{ asset('js/formValidationBootstrap.js') }}"></script>
+
 <!-- page script -->
 @livewireScripts
 @yield('script')

@@ -41,7 +41,6 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>نام و نام خانوادگی</th>
-                                    <th>ایمیل</th>
                                     <th>موبایل</th>
                                     <th>کد ملی</th>
                                     <th>عملیات</th>
@@ -52,7 +51,6 @@
                                     <tr>
                                         <td>{{$teacher->id}}</td>
                                         <td>{{$teacher->name}}</td>
-                                        <td>{{$teacher->email}}</td>
                                         <td>{{$teacher->mobile}}</td>
                                         <td>{{$teacher->natural_id}}</td>
                                         <td>

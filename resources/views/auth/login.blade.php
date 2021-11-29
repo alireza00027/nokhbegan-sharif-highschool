@@ -8,23 +8,22 @@
                 <form action="{{route('login')}}" method="post" autocomplete="off" class="w-100 pb-2 px-3 py-4 needs-validation bg-nokhbegan" novalidate>
                     @csrf
                     @include('layouts.sections.errors')
-                    <div>
-                        <label for="email" class="form-label fs2">
-                            ایمیل <span class="text-danger">*</span>
+                    <div class="mt-3 mb-2">
+                        <label for="mobile" class="form-label fs2">
+                            کدملی <span class="text-danger">*</span>
                         </label>
                         <div class="input-group">
-                            <input type="email"
-                                   name="email"
+                            <input type="text"
+                                   name="natural_id"
                                    class="form-control fs1"
-                                   id="email"
-                                   placeholder="  ایمیل "
-                                   pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                   id="natural_id"
+                                   placeholder="کدملی "
                                    required>
                             <span class="input-group-text">
                             <i class="fa fa-check-circle text-secondary"></i>
                         </span>
                             <div class="invalid-feedback">
-                                ایمیل اشتباه است
+                                کدملی اشتباه است
                             </div>
                         </div>
                     </div>

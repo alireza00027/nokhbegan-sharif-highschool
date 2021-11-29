@@ -29,15 +29,11 @@
                                     <label for="mobile" class="width120">شماره موبایل: </label>
                                     <input class="form-control" id="mobile" name="mobile" value="{{old('mobile',$user->mobile)}}">
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="email" class="width120">ایمیل: </label>
-                                    <input class="form-control" id="email" name="email" value="{{old('email',$user->email)}}">
-                                </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label for="natural_id" class="width120">کد ملی: </label>
                                     <input class="form-control" id="natural_id" name="natural_id" value="{{old('natural_id',$user->natural_id)}}">
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label for="grade" class="width120">پایه: </label>
                                     <select class="form-control select2" id="grade" name="grade">
                                         <option value="teacher" {{$user->grade=="teacher"?'selected':''}}>معلم</option>

@@ -35,7 +35,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('register')}}" class="nav-link @if (url()->current() == route('register')) active @endif">
+                                    <a href="{{route('admin.students.create')}}" class="nav-link @if (url()->current() == route('register')) active @endif">
                                         <i class="fa fa-circle-o nav-icon fs1"></i>
                                         <p>
                                             ثبت کاربر جدید

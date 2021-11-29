@@ -23,6 +23,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/edit/{user}', [UserController::class, 'edit'])->name('students.edit');
         Route::patch('{user}/update', [UserController::class, 'update'])->name('students.update');
         Route::delete('{user}/delete', [UserController::class, 'delete'])->name('students.delete');
+        Route::get('/create', [UserController::class, 'create'])->name('students.create');
+        Route::post('/store', [UserController::class, 'store'])->name('students.store');
     });
 
     //course Routing

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap-rtl.min.css')}}">
 </head>
 <body>
+    @include('sweetalert::alert')
 @yield('content')
 <script src="{{asset('js/auth/auth.js')}}"></script>
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
