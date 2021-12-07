@@ -34,25 +34,25 @@ class UserController extends Controller {
     }
     public function seventhList() {
         $title = "لیست دانش آموزان پایه هفتم";
-        $students = User::where('grade', 'seventh')->latest()->paginate(12);
+        $students = User::where('grade', 'seventh')->latest()->get();
         return view('admin.students.seventh.index', compact('title', 'students'));
     }
 
     public function eighthList() {
         $title = "لیست دانش آموزان پایه هشتم";
-        $students = User::where('grade', 'eighth')->latest()->paginate(12);
+        $students = User::where('grade', 'eighth')->latest()->get();
         return view('admin.students.eighth.index', compact('title', 'students'));
     }
 
     public function ninthList() {
         $title = "لیست دانش آموزان پایه نهم";
-        $students = User::where('grade', 'ninth')->latest()->paginate(12);
+        $students = User::where('grade', 'ninth')->latest()->get();
         return view('admin.students.ninth.index', compact('title', 'students'));
     }
 
     public function teachers() {
         $title = 'لیست معلمین';
-        $teachers = User::whereGrade('teacher')->latest()->paginate(12);
+        $teachers = User::whereGrade('teacher')->latest()->get();
         return view('admin.teachers.index', compact('title', 'teachers'));
     }
 
