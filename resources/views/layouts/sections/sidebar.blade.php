@@ -161,7 +161,7 @@
                     @can('managerOrAssistantOrteacher')
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fa fa-list-alt"></i>
+                                <i class="nav-icon fa fa-file-code-o"></i>
                                 <p>
                                     آزمون صبحانه
                                 </p>
@@ -227,7 +227,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{route('exams.index')}}" class="nav-link @if (url()->current() == route('exams.index')) active @endif">
-                            <i class="nav-icon fa fa-list-alt"></i>
+                            <i class="nav-icon fa fa-file-code-o"></i>
                             <p>
                                 آزمون های صبحانه من
                             </p>

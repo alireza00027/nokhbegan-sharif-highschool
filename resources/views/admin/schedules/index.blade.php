@@ -17,10 +17,15 @@
         <!-- Main content -->
         <section class="content pt-3">
             <div>
-                <div class="card card-nokhbegan">
+                <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-arrow-left ml-1"></i>
-                        <span class="fs4 font-weight-bold">انتخاب جزئیات</span>
+                        <div class="d-flex align-items-center">
+                            <h3 class="card-title">انتخاب جزئیات</h3>
+                            <a href="{{route('admin.schedules.create')}}" class="btn btn-outline-nokhbegan d-flex align-items-center py-1 mr-3">
+                                <i class="fa fa-plus ml-2"></i>
+                                برنامه هفتگی جدید
+                            </a>
+                        </div>
                     </div>
                     <form action="{{route('admin.schedules.index')}}" class="card-body">
                         <livewire:users.select-students/>
