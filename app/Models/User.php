@@ -28,6 +28,7 @@ class User extends Authenticatable {
         'mobile',
         'natural_id',
         'is_admin',
+        'change_password',
         'grade',
         'password',
     ];

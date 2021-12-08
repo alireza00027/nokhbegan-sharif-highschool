@@ -5,6 +5,7 @@ use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\FinancialItemController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,27 +20,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::prefix('exams')->group(function () {
-        Route::get('/', [ExamController::class, 'index'])->name('exams.index');
-        Route::get('chart-style', [ExamController::class, 'chartStyle'])->name('exams.chartStyle');
-    });
+Route::middleware(['auth'])->group(function () {
+    Route::middleware('changePassword')->group(function () {
+        Route::get('/', [HomeController::class, 'index'])->name('home');
+        Route::prefix('exams')->group(function () {
+            Route::get('/', [ExamController::class, 'index'])->name('exams.index');
+            Route::get('chart-style', [ExamController::class, 'chartStyle'])->name('exams.chartStyle');
+        });
 
-    Route::prefix('financials')->group(function () {
-        Route::get('/', [FinancialController::class, 'index'])->name('financials.index');
-        Route::get('/{financial}/show', [FinancialController::class, 'show'])->name('financials.show');
-    });
+        Route::prefix('financials')->group(function () {
+            Route::get('/', [FinancialController::class, 'index'])->name('financials.index');
+            Route::get('/{financial}/show', [FinancialController::class, 'show'])->name('financials.show');
+        });
 
-    Route::prefix('financialItems')->group(function () {
-        Route::get('/{financialItem}/payment', [FinancialItemController::class, 'payment'])->name('financialItems.payment');
-        Route::get('/payment/check', [FinancialItemController::class, 'check'])->name('financialItems.payment.check');
-    });
+        Route::prefix('financialItems')->group(function () {
+            Route::get('/{financialItem}/payment', [FinancialItemController::class, 'payment'])->name('financialItems.payment');
+            Route::get('/payment/check', [FinancialItemController::class, 'check'])->name('financialItems.payment.check');
+        });
 
-    Route::prefix('schedules')->group(function () {
-        Route::get('/', [ScheduleController::class, 'index'])->name('schedules.index');
-        Route::get('/{schedule}/show', [ScheduleController::class, 'show'])->name('schedules.show');
-        Route::patch('/{schedule}/process', [ScheduleController::class, 'process'])->name('schedules.process');
+        Route::prefix('schedules')->group(function () {
+            Route::get('/', [ScheduleController::class, 'index'])->name('schedules.index');
+            Route::get('/{schedule}/show', [ScheduleController::class, 'show'])->name('schedules.show');
+            Route::patch('/{schedule}/process', [ScheduleController::class, 'process'])->name('schedules.process');
+        });
+        Route::get('users/{user}/profile', [UserController::class, 'profile'])->name('users.profile');
+    });
+    Route::prefix('users')->group(function () {
+        Route::get('{user}/change-password', [UserController::class, 'changePassword'])->name('users.changePassword');
+        Route::patch('{user}/change-password', [UserController::class, 'changePasswordProcess'])->name('users.changePasswordProcess');
     });
 });
 

@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration {
             $table->string('mobile', 11);
             $table->string('natural_id', 10);
             $table->tinyInteger('is_admin')->default(0);
+            $table->tinyInteger('change_password')->default(0)->comment('0=>not change 1=>changed');
             $table->enum('grade', ['seventh', 'eighth', 'ninth', 'teacher'])->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -147,6 +147,8 @@ return array(
         'amount' => 'مبلغ',
         'student_id' => 'دانش آموز',
         'n_items' => 'تعداد دانش آموز',
-        'unit' => 'تعداد واحد'
+        'unit' => 'تعداد واحد',
+        'newPassword' => 'رمز عبور جدید',
+        'reNewPassword' => 'تکرار رمز عبور جدید'
     ),
 );
