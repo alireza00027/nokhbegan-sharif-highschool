@@ -106,6 +106,7 @@
                                         <option value="1" >مدیر</option>
                                         <option value="2">معاون</option>
                                         <option value="3">معلم</option>
+                                        <option value="4">مشاور(پشتیبان)</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 form-group">

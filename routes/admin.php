@@ -57,7 +57,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
             Route::get('/{financial}/show', [FinancialController::class, 'show'])->name('financials.show');
         });
 
-        Route::prefix('schedules')->middleware('can:manager')->group(function () {
+        Route::prefix('schedules')->middleware('can:managerOrAdviser')->group(function () {
             Route::get('/', [ScheduleController::class, 'index'])->name('schedules.index');
             Route::get('/create', [ScheduleController::class, 'create'])->name('schedules.create');
             Route::post('/store', [ScheduleController::class, 'store'])->name('schedules.store');

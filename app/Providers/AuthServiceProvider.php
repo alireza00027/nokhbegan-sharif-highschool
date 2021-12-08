@@ -6,8 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
-class AuthServiceProvider extends ServiceProvider
-{
+class AuthServiceProvider extends ServiceProvider {
     /**
      * The policy mappings for the application.
      *
@@ -22,31 +21,35 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot() {
         $this->registerPolicies();
 
-        Gate::define('manager',function () {
+        Gate::define('manager', function () {
             return auth()->user()->hasRole('manager');
         });
 
-        Gate::define('assistant',function () {
+        Gate::define('assistant', function () {
             return auth()->user()->hasRole('assistant');
         });
 
-        Gate::define('teacher',function () {
+        Gate::define('teacher', function () {
             return auth()->user()->hasRole('teacher');
         });
 
-        Gate::define('managerOrAssistant',function () {
+        Gate::define('adviser', function () {
+            return auth()->user()->hasRole('adviser');
+        });
+
+        Gate::define('managerOrAssistant', function () {
             return Gate::allows('manager') or Gate::allows('assistant');
         });
 
-        Gate::define('managerOrAssistantOrteacher',function () {
-            return Gate::allows('manager') or Gate::allows('assistant') or Gate::allows('teacher');
+        Gate::define('managerOrAdviser', function () {
+            return Gate::allows('manager') or Gate::allows('adviser');
         });
 
-
-        
+        Gate::define('managerOrAssistantOrteacher', function () {
+            return Gate::allows('manager') or Gate::allows('assistant') or Gate::allows('teacher');
+        });
     }
 }

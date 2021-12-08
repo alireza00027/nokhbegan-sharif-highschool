@@ -100,34 +100,6 @@
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fa fa-list-alt"></i>
-                                <p>
-                                    برنامه هفتگی
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{route('admin.schedules.create')}}" class="nav-link @if (url()->current() == route('admin.schedules.create')) active @endif">
-                                        <i class="fa fa-circle-o nav-icon fs1"></i>
-                                        <p>
-                                            ثبت برنامه درسی
-                                        </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{route('admin.schedules.index')}}" class="nav-link @if(url()->current() == route('admin.schedules.index'))
-                                         active
-                                          @endif">
-                                        <i class="fa fa-circle-o nav-icon fs1"></i>
-                                        <p>
-                                            لیست برنامه های هفتگی
-                                        </p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-money"></i>
                                 <p>
                                     حساب مالی
@@ -155,6 +127,36 @@
                             </ul>
                         </li>
                         
+                    @endcan
+                    @can('managerOrAdviser')
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-list-alt"></i>
+                                <p>
+                                    برنامه هفتگی
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('admin.schedules.create')}}" class="nav-link @if (url()->current() == route('admin.schedules.create')) active @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            ثبت برنامه درسی
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.schedules.index')}}" class="nav-link @if(url()->current() == route('admin.schedules.index'))
+                                        active
+                                        @endif">
+                                        <i class="fa fa-circle-o nav-icon fs1"></i>
+                                        <p>
+                                            لیست برنامه های هفتگی
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     @endcan
                     @can('managerOrAssistantOrteacher')
                         <li class="nav-item has-treeview">
