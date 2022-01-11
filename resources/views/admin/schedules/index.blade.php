@@ -89,7 +89,7 @@
                                             <tr >
                                                 <td>{{$schedule->id}}</td>
                                                 <td>{{$schedule->user->name}}</td>
-                                                <td>{{$schedule->user->grade}}</td>
+                                                <td>{{$schedule->user->getGadeText()}}</td>
                                                 <td>{{$schedule->month}}</td>
                                                 <td>{{$schedule->getNumberWeek()}}</td>
                                                 <td>{{$schedule->getTime()}}</td>

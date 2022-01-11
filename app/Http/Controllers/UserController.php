@@ -15,8 +15,8 @@ class UserController extends Controller {
     public function changePasswordProcess(Request $request, User $user) {
         $this->validate($request, [
             'prevPassword' => 'required',
-            'newPassword' => 'required|min:6',
-            'reNewPassword' => 'required_with:newPassword|same:newPassword|min:6'
+            'newPassword' => 'required|min:8',
+            'reNewPassword' => 'required_with:newPassword|same:newPassword|min:8'
         ]);
         if (Hash::check($request->prevPassword, $user->password)) {
             $user->password = Hash::make($request->newPassword);

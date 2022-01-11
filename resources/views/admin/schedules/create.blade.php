@@ -21,7 +21,7 @@
                 <div class="card card-nokhbegan">
                     <div class="border-bottom-0 mx-4 mt-3 d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
-                            <h3 class="card-title">ثبت حساب مالی</h3>
+                            <h3 class="card-title">ثبت برنامه هفتگی</h3>
                         </div>
                     </div>
                     <!-- /.card-header -->

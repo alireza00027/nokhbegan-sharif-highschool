@@ -28,27 +28,17 @@ class Exam extends Model {
     }
     //methods
     public function getStatus() {
-        switch ($this->point) {
-            case '0':
-                return ['bg' => 'veryBad', 'str' => 'خیلی بد'];
-                break;
-            case '0.5':
-                return ['bg' => 'bad', 'str' => 'بد'];
-                break;
-            case '1':
-                return ['bg' => 'middle', 'str' => 'متوسط'];
-                break;
-            case '1.5':
-                return ['bg' => 'good', 'str' => 'خوب'];
-                break;
-            case '2':
-                return ['bg' => 'excellent', 'str' => 'عالی'];
-                break;
-
-            default:
-                return ['bg' => 'unknow', 'str' => 'مشخص نشده'];
-                break;
+        $status = ['bg' => 'unknow', 'str' => 'مشخص نشده'];
+        if ($this->point >= 0 and $this->point <= 0.5) {
+            $status = ['bg' => 'veryBad', 'str' => 'بد'];
+        } elseif ($this->point > 0.5 and $this->point <= 1.0) {
+            $status = ['bg' => 'bad', 'str' => 'متوسط'];
+        } elseif ($this->point > 1.0 and $this->point <= 1.5) {
+            $status = ['bg' => 'middle', 'str' => 'خوب'];
+        } elseif ($this->point > 1.5 and $this->point <= 2) {
+            $status = ['bg' => 'good', 'str' => 'عالی'];
         }
+        return $status;
     }
     public function getTime() {
         $v = Verta::instance($this->created_at);
